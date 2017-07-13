@@ -1,0 +1,38 @@
+# smtplib module needs to be imported
+# getpass module for getting user password
+import smtplib
+import getpass
+
+#setting up connection
+conn = smtplib.SMTP("<smtp domain>", 587)
+
+#start Transport Layer Security
+conn.starttls()
+
+#get login credentials
+user_inp = raw_input("Enter uid: ")
+userid = user_inp.strip() + "@domain.com"
+
+pswd = getpass.getpass("Enter password : ")
+
+conn.login(userid, pswd)
+
+message = """From: Arun <arun.rg@domain.com>
+To: ArunGmail <arunrg.zone@gmail.com>
+Subject: Sent using Python
+
+Hi Arun, 
+This mail is sent via Python script!!!!. 
+Small steps towards right path is better than one wrong step!!!. Keep trying...
+
+Thank and Regards,
+Arun RG
+"""
+
+toid = ["arunrg.zone@gmail.com","zzzzz@domain.com"]
+fromid = "from id @domain.com"
+
+#sending email
+conn.sendmail(fromid, toid, message)
+
+conn.quit()
