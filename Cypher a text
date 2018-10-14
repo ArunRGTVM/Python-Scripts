@@ -1,0 +1,29 @@
+def cypher(letters):
+    characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    numbers = "1234567890"
+    if letters.isalpha():
+        index = characters.index(letters) + 5
+        if index > 51:
+            index = index - 52
+        nChar = characters[index]
+    else:
+        index = numbers.index(letters) + 5
+        if index > 9:
+            index = index - 10
+        nChar = numbers[index]
+    return nChar
+
+output = open("output.txt","w")
+
+with open("input.txt","r") as input:
+    lines = input.readlines()
+    for line in lines:
+        nline = ""
+        for alpha in line:
+            if alpha.isalnum():
+                nline +=  cypher(alpha)
+            else:
+                nline += alpha
+        output.write(nline)
+
+output.close()
