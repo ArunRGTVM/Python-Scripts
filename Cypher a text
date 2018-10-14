@@ -1,3 +1,4 @@
+#replaces a character in the input file with the next 5th character.
 def cypher(letters):
     characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     numbers = "1234567890"
